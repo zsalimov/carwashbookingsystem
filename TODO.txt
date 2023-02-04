@@ -1,0 +1,10 @@
+1. CompanyAdmin store ekleyebilir
+2. CompanyAdmin userlari StoreAdmin yapabilir amam sadece usertype 0 olanlari
+
+
+
+
+10. Site dashboard 
+11. company dashboard
+12. store dashboard
+13. customer dashboard

@@ -18,7 +18,7 @@ class AuthController extends Controller
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password'])
+            'password' => bcrypt($data['password']),            
         ]);
 
         $token = $user->createToken('main')->plainTextToken;
@@ -44,16 +44,23 @@ class AuthController extends Controller
             
         }
         $user = Auth::user();
+        $token = $user->createToken('main')->plainTextToken;   
+        // $redirect_url = '/dashboard'; 
+        // if ($user->usertype == 'StoreAdmin') {
+        //     $redirect_url = '/store-dashboard';
+        // } elseif ($user->usertype == 'CompanyAdmin') {
+        //     $redirect_url = '/company-dashboard';
+        // } elseif ($user->usertype == 'SiteAdmin') {
+        //     $redirect_url = '/site-dashboard';
+        // }               
         
-        $token = $user->createToken('main')->plainTextToken;
-       
-        //return response(compact('user', 'token')); 
         return [
             'user' => $user,
-            'token' => $token,
-            
+            'token' => $token, 
+            // 'redirect_url' => $redirect_url         
         ];
     }
+    
     public function logout(Request $request)
     {
         /** @var User $user **/

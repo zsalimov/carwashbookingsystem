@@ -1,24 +1,29 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { useState } from "react";
 import { createContext } from "react";
 
 const StateContext = createContext({
-    user : null,
+    user : null,    
     token: null,
+    url:null,
     notification: null,
-    setUser: () => {},
+    errorMessage: null,
+    setUrl: () => {},
+    providerLogin: () => {},
+    setUser: () => {},    
     setToken: () => {},
     setNotification: () => {},
     setErrorMessage: () => {}
 })
-
+    
 export const ContextProvider = ({children}) => {
     const [user, setUser] = useState({
-       
+    
     });
+    const providerLogin = useMemo(() => ({user,setUser}), [user,setUser]) 
     
     const [notification, _setNotification] = useState('');
-
+    const [url, setUrl] = useState('');
     const setNotification = (message) => {
         _setNotification(message);
         setTimeout(() => {
@@ -49,9 +54,12 @@ export const ContextProvider = ({children}) => {
     return(
         <StateContext.Provider value={{
            user,
+           url,         
            token,
-           setUser,
+           setUser,          
            setToken,
+           setUrl,
+           providerLogin,
            notification,
            errorMessage,
            setNotification,

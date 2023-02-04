@@ -23,7 +23,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'usertype'
+        'usertype',
+        'imageUrl'
        
     ];
 
@@ -54,7 +55,14 @@ class User extends Authenticatable
     protected function usertype(): Attribute
     {
         return new Attribute(
-            get: fn ($value) =>  ["user", "admin", "manager", "storemanager"][$value],
+            get: fn ($value) =>  ["Customer", "StoreAdmin", "CompanyAdmin", "SiteAdmin"][$value],
         );
     }
+    // public function scopeOfType($query, $type)
+    // {
+    //     sleep(1);
+    //     return $query->where('cId', $type)
+    //     ->where('cName', 'LIKE', '%E%')
+    //     ->orderBy('cId')->limit(5);
+    // }
 }

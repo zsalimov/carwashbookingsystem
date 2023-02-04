@@ -50,8 +50,11 @@ class Defcompany extends Model
      * @var array
      */
     protected $casts = [
-         'cName' => 'string'
+         'cName' => 'string',
+         'cCompanyAdmin' => 'string'
     ];
+
+    
 
     /**
      * The attributes that should be mutated to dates.
