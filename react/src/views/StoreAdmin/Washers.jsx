@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axiosClient from '../../axios-client';
 import { useStateContext } from '../../contexts/ContextProvider';
+import {Settings} from'@mui/icons-material'
 
 
 export default function Washers() {
@@ -44,7 +45,7 @@ export default function Washers() {
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> {/*inline styling */}
-        <h1> Washers </h1>
+        <h1> Car Wash</h1>
         <Link to="/washers/new" className='btn-add'>Add new</Link>
       </div>
       <div className='card animated fadeInDown'>
@@ -52,7 +53,7 @@ export default function Washers() {
           <thead>
             <tr>
               <th>Washer ID</th>
-              <th>Whaser Store Name</th>
+              <th>Washer Store Name</th>
               <th>Washer Name</th>
               <th>Washer O/C Pattern ID</th>
               <th>Actions</th>
@@ -75,8 +76,8 @@ export default function Washers() {
                   <td>{w.sName}</td>
                   <td>{w.wName}</td>
                   <td>{w.ocpName}</td>
-                  <td>
-                    <Link className="btn-edit" to={'/washers/' + w.wId}>Edit</Link>
+                  <td>                    
+                   <Link   to={'/washers/' + w.wId} className='btn-add'><span className='settings'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Settings</Link>
                     &nbsp;
                     <button onClick={ev => onDelete(w)} className="btn-delete">Delete</button>
                   </td>

@@ -6,7 +6,9 @@ use App\Models\Defcompany;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Info;
 use Illuminate\Support\Facades\Auth;
+
 
 class CompanyController extends Controller
 {
@@ -116,14 +118,14 @@ class CompanyController extends Controller
                 ->limit(1)
                 ->update(array('usertype' => 0)); //convert admin user to customer
 
-            // 1. refUserCompany tablosunda ucUserId = $uId olan satirlar siliniz varsa onceden bilgileri temizleyebilirisin
+            // 1. in refUserCompany table ucUserId = $uId 
             DB::table('refUserCompany')
                 ->where('ucCompanyId', $cId)
                 ->delete();
-            // 2. refUserCompany tablosun $cId, $uId satiri eklenir boylece 
+            // 2. refUserCompany tablosun $cId, $uId
             DB::table('refUserCompany')
                 ->insert(array('ucCompanyId' => $cId, 'ucUserId' => $uId));
-            // 3. user Tablosunda id = $uId olan kulanici user type 2 yapilir.
+            // 3. user table id = $uId usertype are converted to usertype 2 .
             DB::table('users')
                 ->where('id', $uId)
                 ->limit(1)
@@ -185,5 +187,24 @@ class CompanyController extends Controller
     return 1;
     // 3. Future work:: Only admin from the current company can delete the user
 
+    }
+    public static $revenue = 2000;
+    public function statistics() {  
+        $user = Auth::user();
+        $coef = 1; 
+
+        if ($user->usertype == 'CompanyAdmin') {
+            $coef = 7;          
+        } elseif ($user->usertype == 'SiteAdmin') {
+            $coef = 9;            
+        }               
+    self::$revenue -= 200;
+        $arr = array(
+            new Info('Revenue', $coef * 4000, $coef * 2400, $coef * self::$revenue, -3),
+            new Info('Sales', $coef * 300, $coef * 180, $coef * 120, 3),
+            new Info('Costs', $coef * 1000, $coef * 700, $coef * 300, -3.3),
+        );
+        
+        return $arr;
     }
 }

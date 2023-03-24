@@ -10,15 +10,15 @@ export default function VehicleType() {
   const [loading, setLoading] = useState(false)
   const [vechicles, setVechicles] = useState([])
   const [vehicleId, setVehicleId] = useState([])
-  const [min, setMin] = useState(5)
+  // const [min, setMin] = useState(5)
   const { setNotification } = useStateContext()
-  const minuteOptions = [
-    { value: 3, label: "3 minutes" },
-    { value: 5, label: "5 minutes" },
-    { value: 10, label: "10 minutes" },
-    { value: 15, label: "15 minutes" },
-    { value: 20, label: "20 minutes" },
-  ];
+  // const minuteOptions = [
+  //   { value: 3, label: "3 minutes" },
+  //   { value: 5, label: "5 minutes" },
+  //   { value: 10, label: "10 minutes" },
+  //   { value: 15, label: "15 minutes" },
+  //   { value: 20, label: "20 minutes" },
+  // ];
 
   useEffect(() => {
     fetchVehicles();
@@ -68,11 +68,12 @@ export default function VehicleType() {
   }
 
   var onAssign = (ev) => {
+    console.log(vehicleId)
     ev.preventDefault()
     const payload = {
       wvWasherId: id,
       wvVehicleTypeId: vehicleId,
-      wvDurationMin: min,
+      wvDurationMin: 0,     // prevent extra controller changes and table column delete
     }
     axiosClient.post(`/add_vehicles`, payload)
       .then(() => {
@@ -103,7 +104,7 @@ export default function VehicleType() {
                 <tr>
                   <th>Vehicle ID</th>
                   <th>Vehicle Name</th>
-                  <th>Duration in minutes</th>
+                  {/* <th>Duration in minutes</th> */}
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -112,7 +113,7 @@ export default function VehicleType() {
                   <tr key={v.vtId}>
                     <td>{v.vtId}</td>
                     <td>{v.vtName}</td>
-                    <td>{v.wvDurationMin}</td>
+                    {/* <td>{v.wvDurationMin}</td> */}
                     <td>
                       <button onClick={ev => onDelete(v)} className="btn-delete">Delete</button>
                     </td>
@@ -134,9 +135,9 @@ export default function VehicleType() {
             <label><h1>Add vehicle type to a washer</h1></label>
 
             <Select options={options} onChange={(ev) => { setVehicleId(ev.value) }} />
-            <br />
-            <Select options={minuteOptions} onChange={(ev) => { setMin(ev.value) }} />
-            <br />
+            
+            {/* <Select options={minuteOptions} defaultValue={{ value: 5, label: "5 minutes" }} onChange={(ev) => { setMin(ev.value) }} />
+            <br /> */}
             <button className='btn'>Assign</button>
           </form>
         }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\Http\Requests\StoreUserRequest;
@@ -16,10 +17,11 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index()
-    {
+    public function index(Request $request)
+    {  
+              
         return UserResource::collection(
-            User::query()->orderBy('id')->paginate(10)
+            User::query()->orderBy('id')->paginate($request['pageOption'])
         );
 
         // refUserComapny -> Company id
@@ -35,9 +37,9 @@ class UserController extends Controller
     {
         $data = $request->validated();
         $data['password'] = bcrypt($data['password']);
-        $user = User::create($data);
-        
-        return response(new UserResource($user), 201);
+        $data['usertype'] = 0;
+        $user = User::create($data);         
+       return response(new UserResource($user), 201);
     }
 
     /**
@@ -83,3 +85,4 @@ class UserController extends Controller
     }
     
 }
+?>

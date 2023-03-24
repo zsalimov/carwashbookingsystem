@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Mockery\Matcher\Not;
 
 class User extends Authenticatable
 {
@@ -24,7 +25,7 @@ class User extends Authenticatable
         'email',
         'password',
         'usertype',
-        'imageUrl'
+        'imageUrl',
        
     ];
 
@@ -55,7 +56,7 @@ class User extends Authenticatable
     protected function usertype(): Attribute
     {
         return new Attribute(
-            get: fn ($value) =>  ["Customer", "StoreAdmin", "CompanyAdmin", "SiteAdmin"][$value],
+            get: fn ($value) => ["Customer", "StoreAdmin", "CompanyAdmin", "SiteAdmin"][$value],
         );
     }
     // public function scopeOfType($query, $type)

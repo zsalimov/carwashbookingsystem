@@ -1,10 +1,12 @@
 import { useRouteError } from "react-router-dom";
 import lottie  from '.././assets/img/error-404.gif'
+import SignInSide from "./SignInSide";
 
 export default function NotFound404() {
 
 
   return (
+    
    
     <div id="container_div">
       <div id="error-div" >

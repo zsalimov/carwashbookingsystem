@@ -30,7 +30,7 @@ class StoreController extends Controller
             ->leftjoin('refUserStore', 'refUserStore.usStoreId', '=', 'defStore.sId')
             ->leftjoin('users', 'users.Id', '=', 'refUserStore.usUserId')
             ->where('sCompanyId', '=', $company_id)
-            ->select('defStore.sId', 'defStore.sName', 'defCompany.cName', 'users.Name')
+            ->select('defStore.sId', 'defStore.sName', 'defCompany.cName', 'users.Name', 'sLatitude', 'sLongitude')
             ->get(); 
             
         // SELECT defStore.sId, defStore.sName, defCompany.cName, FROM defStore 
@@ -145,7 +145,7 @@ class StoreController extends Controller
             ->where('usStoreId', $id)
             ->delete();
 
-        // 2. RefUserStore tablosundan usUserIdnin User tablosunda Idsi usertype sifira cekilmeli.
+        // 2. From RefUserStore table usUserId user should be pointing the User table so that usertype will be converted to 0.
         foreach ($users as $user) {
             DB::table('Users')
                 ->where('id', $user->usUserId)

@@ -19,9 +19,8 @@ export default function UserForm() {
         name: '',
         email: '',
         password: '',
-        password_confirmation: ''
+        password_confirmation: '',        
     })
-
 
     console.log('user Form', user)
     if (id) {

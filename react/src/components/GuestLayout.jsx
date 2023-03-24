@@ -17,11 +17,9 @@ export default function GuestLayout() {
     }
   }
 
-  return (
-    <div>
+  return (    
       <div>
         <Outlet />
-      </div>
-    </div>
+      </div>    
   )
 }

@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom';
 import axiosClient from '../../axios-client';
 import { useStateContext } from '../../contexts/ContextProvider';
-import car1 from '../../assets/img/car1.jpg'
+
 
 export default function CompanyUsers() {
   const [users, setUsers] = useState([]);
@@ -40,14 +40,9 @@ export default function CompanyUsers() {
   }
   return (
     <>
-
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-
         <h1> Users </h1>
-
       </div>
-
-
       <div className='card animated fadeInDown'>
         <table>
           <thead>

@@ -23,12 +23,12 @@ class AuthController extends Controller
 
         $token = $user->createToken('main')->plainTextToken;
         
-        //return response(compact('user', 'token')); 
+        return response(compact('user', 'token')); 
         // this is the same as the previous one
-        return response([
-            'user' => $user,
-            'token' => $token
-        ]);
+        // return response([
+        //     'user' => $user,
+        //     'token' => $token
+        // ]);
     }
     public function login(LoginRequest $request)
     {   

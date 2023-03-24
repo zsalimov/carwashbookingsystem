@@ -34,7 +34,7 @@ class Defstore extends Model
      * @var array
      */
     protected $fillable = [
-         'sCompanyId', 'sName'
+         'sCompanyId', 'sName','sLatitude', 'sLongitude'
     ];
 
     /**

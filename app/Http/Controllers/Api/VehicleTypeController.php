@@ -93,7 +93,7 @@ class VehicleTypeController extends Controller
     // on wvVehicleTypeId = vtId
     // WHERE wvWasherId = 2)
             
-             
+             // subquering 
 
         $vehicles = DB::select("SELECT * FROM defvehicletype 
         WHERE vtId NOT IN 

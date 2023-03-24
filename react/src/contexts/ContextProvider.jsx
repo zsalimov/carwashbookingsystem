@@ -3,7 +3,8 @@ import { useState } from "react";
 import { createContext } from "react";
 
 const StateContext = createContext({
-    user : null,    
+    user : null,
+    users: null,    
     token: null,
     url:null,
     notification: null,
@@ -11,24 +12,23 @@ const StateContext = createContext({
     setUrl: () => {},
     providerLogin: () => {},
     setUser: () => {},    
+    setUsers: () => {},    
     setToken: () => {},
     setNotification: () => {},
     setErrorMessage: () => {}
 })
     
 export const ContextProvider = ({children}) => {
-    const [user, setUser] = useState({
-    
-    });
+    const [user, setUser] = useState({});
     const providerLogin = useMemo(() => ({user,setUser}), [user,setUser]) 
-    
+    const [users, setUsers] = useState([]);
     const [notification, _setNotification] = useState('');
     const [url, setUrl] = useState('');
     const setNotification = (message) => {
         _setNotification(message);
         setTimeout(() => {
             _setNotification('');
-        }, 5000)
+        }, 2000)
     }
     const [errorMessage, _setErrorMessage] = useState('');
 
@@ -54,9 +54,11 @@ export const ContextProvider = ({children}) => {
     return(
         <StateContext.Provider value={{
            user,
+           users,
            url,         
            token,
-           setUser,          
+           setUser, 
+           setUsers,         
            setToken,
            setUrl,
            providerLogin,

@@ -8,6 +8,11 @@ import Select from 'react-select';
 import VehicleType from './VehicleType'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import 'react-tabs/style/react-tabs.css';
+import WasherType from './WasherType'
+import WasherConfig from './WasherConfig'
+import WasherPromotion from './WasherPromotion'
+import PostProcess from './PostProcess'
+import ServiceType from './ServiceType'
 
 
 export default function WasherForm() {
@@ -105,7 +110,8 @@ export default function WasherForm() {
 
     return (
         <>
-            {!isNew && <h1>Update Washer: {washer.wName}</h1>}
+           
+            {!isNew &&  <h1>Update Washer:{' '}{washer.wName}</h1>}
 
             {isNew && <h1>Add New Washer:</h1>}
             <div className='card animated fadeInDown'>
@@ -135,16 +141,35 @@ export default function WasherForm() {
                 }
 
             </div>
-             <Tabs defaultIndex={1} onSelect={(index) => console.log(index)}>
+            <Tabs defaultIndex={0} onSelect={(index) => console.log(index)}>
                 <TabList>
                     <Tab>Vehicles</Tab>
-                    <Tab>Washers</Tab>
+                    <Tab>Washer Type</Tab>
+                    <Tab>Configuration</Tab>
+                    <Tab>Promotions</Tab>
+                    <Tab>Post Process</Tab>
+                    <Tab>Service Type</Tab>
                 </TabList>
-            
-             <TabPanel>
-                <VehicleType />
-             </TabPanel>
-             </Tabs>
+
+                <TabPanel>
+                    <VehicleType />
+                </TabPanel>
+                <TabPanel>
+                    <WasherType />
+                </TabPanel>
+                <TabPanel>
+                    <WasherConfig />
+                </TabPanel>
+                <TabPanel>
+                    <WasherPromotion />
+                </TabPanel>
+                <TabPanel>
+                    <PostProcess />
+                </TabPanel>
+                <TabPanel>
+                    <ServiceType />
+                </TabPanel>
+            </Tabs>
         </>
     )
 }

@@ -98,7 +98,7 @@ body {
 
 table {    
     width: 100%;
-    border-spacing: 0;
+    border-spacing: 0;    
     border-collapse: collapse;
 }
 table tr:nth-child(even) {
@@ -111,8 +111,10 @@ table > thead > tr > th {
     background-color: #efefef;
 }
 table>thead {
+    border-bottom: solid 0.1px #716f6f;
     position: sticky;
     top: 50px;
+    
 }
 
 
@@ -125,6 +127,7 @@ table > tbody > tr > td {
 
 .card {
     background-color: #FFF;
+    border-top:solid 0.2px #494948;
     border-radius: 0.5rem;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
     padding: 1.25rem 1.5rem;
@@ -144,7 +147,7 @@ table > tbody > tr > td {
     position: fixed;
     right: 1rem;
     bottom: 1rem;
-    z-index: 100;
+    z-index: 1000;
     padding: 1rem 1.5rem;
     background-color: #00a762;
     color: white;
@@ -164,20 +167,20 @@ table > tbody > tr > td {
 /* Login/Signup forms*/
 
 .login-signup-form {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 100vh;    
+    justify-content: center;  
+    flex:2;  
 }
 
 .login-signup-form .form {
-    width: 360px;
+    width: 460px;
     position: relative;
     z-index: 1;
     background: #FFFFFF;
     max-width: 360px;
     padding: 34px;
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
+    height: 100vh;
 }
 
 .login-signup-form .title {
@@ -196,6 +199,25 @@ table > tbody > tr > td {
 .login-signup-form .form .message a {
     color: #5b08a7;
     text-decoration: none;
+}
+.signupleft {
+    background-image: url('./assets/img/car1.jpg');
+    flex:11;    
+    width: 81%;
+    height: 100vh;
+    background-position: -820px;
+    background-repeat: no-repeat;
+
+}
+.loginleft {
+    flex:11;
+    /* background: url('./assets/img/car2.jpg'); */
+    width: 100%;
+    height: auto;
+    background-position:60% 100%;
+    background-repeat: no-repeat;
+    
+    
 }
 
 /* Login/Signup form */
@@ -231,7 +253,7 @@ table > tbody > tr > td {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-#defaultLayout .content {
+#defaultLayout{
     flex: 1;
 }
 #defaultLayout2 {
@@ -341,4 +363,183 @@ main {
 .nav-item {
     background-color: #eeeeff;
     background-clip: content-box;
+}
+.settings {
+    margin-right: 5px;  
+    margin-top: -3px;
+    padding: 2px;  
+    background-image: url('./assets/img/settings.png');
+}
+.myvehicles{    
+    margin: 5px;   
+    background-image: url('./assets/img/my.jpg');
+    background-position: -330px;
+    width: 100%;
+    height: 400px;
+     
+}
+.cartext{
+    font-size: 80px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 400px;
+    text-shadow: 5px 5px #fff;
+}
+.copy{
+    padding: 60px;
+    text-align: center;
+}
+#timeSelector button {
+    width: 100%;
+    margin: 2px;
+    border-radius: 0;
+}
+.timeRows{      
+    float:left;
+    color: #00f;
+    font-weight: bold;
+    line-height: 24px;
+    background-color: rgba(101, 153, 5, 0.3);
+}
+#textOpen {
+    display: flex;
+    font-weight: bold;
+    line-height: 20px;
+    font-size: 23px;
+    justify-content: center;
+    color: #00f;
+    padding: 10px;
+    background-color: rgba(101, 153, 5, 0.3);
+}
+.btn1{
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f70303;
+    border: 0;
+    text-decoration: none;
+    padding: 2px;
+    color: #FFFFFF;
+    font-size: 16px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+.btn1:disabled {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #cc0808;
+    border: 0;    
+    text-decoration: none;
+    padding: 2px;
+    color: #FFFFFF;
+    font-size: 16px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+.btn1:disabled:hover {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: transparent;
+    border: solid 2px #fa0808;;
+    text-decoration: none;
+    padding: 2px;
+    color: #191818;
+    font-size: 16px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+
+}
+.btn1:hover {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: transparent;
+    border: solid 2px #0593f9;;
+    text-decoration: none;
+    padding: 2px;
+    color: #191818;
+    font-size: 16px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+
+}
+.btn2{
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #909294;
+    border: 0;
+    text-decoration: none;
+    padding: 2px;
+    color: #070707;
+    font-size: 16px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+.btn0{
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #085fa7;
+    border: 0;
+    text-decoration: none;
+    padding: 2px;
+    color: #FFFFFF;
+    font-size: 16px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+.btn9{
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #eed706;
+    border: 0;
+    text-decoration: none;
+    padding: 2px;
+    color: #121111;
+    font-size: 16px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+.featuredItem1 {    
+    margin: 20px;
+    padding: 20px;
+    width: 300px;
+    border-radius: 2px;
+    color: #FFFFFF;
+    cursor: pointer;
+    -webkit-box-shadow: 8px 5px 28px 0.1px rgb(252, 169, 169);
+    -moz-box-shadow: 8px 5px 28px 0.1px rgb(235, 99, 99);
+    box-shadow: 8px 5px 28px 0.1px rgb(231, 141, 141);
+}
+.statistic{
+    background-image: url('./assets/img/expensive.gif');
+    background-size: 240px 240px;
+    background-repeat: no-repeat;    
+    margin: 20px;
+    width: 240px;
+    height: 240px;
+    border-radius: 2px;
+    color: #110e0e;
+    cursor: pointer;
+    -webkit-box-shadow: 8px 5px 28px 0.1px rgb(87, 84, 84);
+    -moz-box-shadow: 8px 5px 28px 0.1px rgb(87, 84, 84);
+    box-shadow: 8px 5px 28px 0.1px rgb(87, 84, 84);
+}
+.salesStat{
+    background-image: url('./assets/img/statistic.gif');
+    background-size: 240px 240px;
+    background-repeat: no-repeat;    
+    margin: 20px;
+    width: 240px;
+    height: 240px;
+    border-radius: 2px;
+    color: #110e0e;
+    cursor: pointer;
+    -webkit-box-shadow: 8px 5px 28px 0.1px rgb(87, 84, 84);
+    -moz-box-shadow: 8px 5px 28px 0.1px rgb(87, 84, 84);
+    box-shadow: 8px 5px 28px 0.1px rgb(87, 84, 84);
 }

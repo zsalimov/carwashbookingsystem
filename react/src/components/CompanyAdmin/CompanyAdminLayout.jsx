@@ -18,17 +18,14 @@ export default function CompanyAdminLayout() {
   }
 
   return (
-
-    <div id="defaultLayout">
-      <CompanyAdminPanel />
-      <div className='content'>
-        <Header />
-        <main>
+    <>
+      <Header />
+      <div className="mainContainer">
+        <CompanyAdminPanel />
+        <div className='content'>
           <Outlet />
-        </main>
+        </div>
       </div>
-    </div>
-
-
+    </>
   )
 }

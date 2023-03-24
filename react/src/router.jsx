@@ -22,6 +22,11 @@ import Reservations from "./views/Customer/Reservations";
 import Stores from "./views/CompanyAdmin/Stores";
 import StoreForm from "./views/CompanyAdmin/StoreForm";
 import WasherForm from "./views/StoreAdmin/WasherForm";
+import MyVehicles from "./views/Customer/MyVehicles";
+import MyVehiclesForm from "./views/Customer/MyVehiclesForm";
+import ReservationForm from "./views/Customer/ReservationForm";
+import Profile from "./views/Customer/Profile";
+import LoginLayout from "./components/LoginLayout";
 
 
 
@@ -64,8 +69,7 @@ const router = createBrowserRouter( [
         {
             path: '/companies/:id',
             element: <CompanyForm key="companyUpdate"/>
-        },        
-
+        }
         ]
     },
     
@@ -106,7 +110,7 @@ const router = createBrowserRouter( [
             {
                 path: '/stores/new',
                 element: <StoreForm key="storeCreate"/>
-            },    
+            }
         ]
     },
     {
@@ -124,7 +128,7 @@ const router = createBrowserRouter( [
             {
                 path: '/washers/:id',
                 element: <WasherForm key="washerUpdate"/>
-            },
+            }
         ]
     },
     {
@@ -138,6 +142,31 @@ const router = createBrowserRouter( [
             {
                 path: '/reservations',
                 element: <Reservations />
+            },
+            {
+                path: '/reservation_form/:wId/:vId',
+                element: <ReservationForm />
+            },
+            {
+                path: '/myvehicles',
+                element: <MyVehicles />
+            },
+            {
+                path: '/my_vehicles/new',
+                element: <MyVehiclesForm key="vehicleUpdate"/>
+            },
+            {
+                path: '/my_vehicles/:id',
+                element: <MyVehiclesForm key="vehiclespdate"/>
+            },
+        ]
+    },{
+        path:'/',
+        element:<LoginLayout />,
+        children: [                  
+            {
+                path: '/profile',
+                element: <Profile key = "costum"/>
             }
         ]
     },

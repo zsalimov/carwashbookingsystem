@@ -1,5 +1,5 @@
 import React from 'react'
-import {  Navigate,Outlet } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
 import Header from '../Header'
 import CustomerPanel from './CustomerPanel'
 import { useStateContext } from '../../contexts/ContextProvider';
@@ -19,16 +19,14 @@ export default function CustomerLayout() {
   }
 
   return (
-    <div id="defaultLayout">
-      <CustomerPanel />
-      <div className='content'>
-        <Header />
-        <main>
+    <>
+      <Header />
+      <div className="mainContainer">
+        <CustomerPanel />
+        <div className='content'>
           <Outlet />
-        </main>
+        </div>
       </div>
-
-
-    </div>
+    </>
   )
 }
