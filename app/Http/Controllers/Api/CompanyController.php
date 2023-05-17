@@ -24,7 +24,7 @@ class CompanyController extends Controller
        // SELECT cId, cName, Name FROM defCompany A LEFT JOIN  refUserCompany B ON A.cId
        //= B.ucCompanyId left JOIN users C ON B.ucUserId = C.Id
        $companies = DB::table('defCompany')
-        ->leftJoin('refusercompany','defCompany.cId', '=', 'refUserCompany.ucCompanyId')
+        ->leftJoin('refUserCompany','defCompany.cId', '=', 'refUserCompany.ucCompanyId')
         ->leftJoin('users','users.id', '=', 'refUserCompany.ucUserId')
         ->select('defCompany.cId', 'defCompany.cName', 'users.Name')
         ->get();
@@ -158,7 +158,7 @@ class CompanyController extends Controller
         $company_id = DB::table('refUserCompany')
         ->where('ucUserId', $user["id"])->value('ucCompanyId');
 
-        $users = DB::table('Users')
+        $users = DB::table('users')
         ->join('refUserStore','users.id', '=', 'refUserStore.usUserId')
         ->join('defStore','defStore.sid', '=', 'refUserStore.usStoreId')
         ->where('defStore.scompanyid', '=', $company_id)
