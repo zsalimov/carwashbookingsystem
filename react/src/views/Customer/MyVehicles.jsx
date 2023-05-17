@@ -62,7 +62,7 @@ export default function MyVehicles() {
                 <Link to="/my_vehicles/new" className='btn-add'>Add new</Link>
             </div>
 
-            {vehicles.length > 1 ? (<div style={{ width: '70%', float: 'left', justifyContent: 'center' }}>
+            {vehicles.length >= 1 ? (<div style={{ width: '70%', float: 'left', justifyContent: 'center' }}>
                 <div className='card animated fadeInDown'>
                     <table>
                         <thead>
@@ -104,10 +104,8 @@ export default function MyVehicles() {
                 {notification &&
                     <div className='notification'>
                         {notification}
-
                     </div>
                 }
-
             </div> ) : (!loading && 
             <div style={{ width: '70%', float: 'left', justifyContent: 'center' }}>
             <div className='card animated fadeInDown'> 

@@ -4,58 +4,48 @@ import { useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axiosClient from '../axios-client';
 import { useStateContext } from '../contexts/ContextProvider';
-import CryptoJS from "crypto-js"
-
-
+// defining the variables
 export default function Signup() {
     const navigate = useNavigate();
     const nameRef = useRef();
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
     const passwordConfirmationRef = useRef();
-
     const [errors, setErrors] = useState(null);
-
-    const { setUser, setToken } = useStateContext();
-    
-
+    const { notification, setNotification, setUser, setToken } = useStateContext();
+// sending user input as a payload to the controller
     const onSubmit = (ev) => {
         ev.preventDefault()
         const payload = {
             name: nameRef.current.value,
             email: emailRef.current.value,
             password: passwordRef.current.value,
-            password_confirmation: passwordConfirmationRef.current.value,         
+            password_confirmation: passwordConfirmationRef.current.value,
         }
-
+// to send the data post method was used
         axiosClient.post('/signup', payload)
-            .then((data) => {
+            .then((data) => {     
                 setUser(data.user)
                 setToken(data.token)
+                setNotification("You have signed up successfully")
                 navigate('/login');
             })
             .catch(err => {
                 const response = err.response;
                 if (response && response.status === 422) {
-
                     setErrors(response.data.errors);
                 }
             })
-
     }
-    return (
-        <div style={{ display: 'flex' }}>
-            <Grid className="signupleft"
-                item
-                xs={false}
-                sm={4}
-                md={7}
-                sx={{
 
+    return ( //this part displays the sign up view
+        <div style={{ display: 'flex' }}>
+            <Grid className="signupleft" item xs={false} sm={4} md={7}
+                sx={{
                     backgroundImage: `url(../../src/assets/img/car2.jpg)`,
                     backgroundRepeat: 'no-repeat',
                     backgroundColor: (t) =>
-                        t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+                    t.palette.mode === 'dark' ? t.palette.grey[50] : t.palette.grey[900],
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                 }}
@@ -83,7 +73,8 @@ export default function Signup() {
                     <div className='copy'> {'Copyright © '}{new Date().getFullYear()} </div>
                 </div>
             </div>
+            {notification &&
+                <div className='notification'> {notification} </div>}               
         </div>
     )
-
 }

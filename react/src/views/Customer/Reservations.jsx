@@ -133,7 +133,7 @@ export default function Reservations() {
     const res = await axiosClient.post(`/my_vehicles/${user.id}`)
     setVehicles(res.data)  
     setWashers(...vehicles, washers) 
-    debugger
+
     setVehiclesLoaded(true)
     const vehicleOptions = res.data.map(function (v) {
       return {
@@ -165,7 +165,7 @@ export default function Reservations() {
               <div>
                 <div className='card animated fadeInDown'>
                   <Select options={options} defaultValue={options[0]} onChange={(ev) => { setVehicleId(ev.value)}} />
-                  <button onClick={ev => getWashers()} disabled={position == null} className="btn-add">Search washers</button>
+                  <button onClick={ev => getWashers()} disabled={position == null} className="btn-add">Search car wash</button>
                 </div>
                 {washersLoaded &&
                   <div className='card'>
@@ -269,7 +269,7 @@ export default function Reservations() {
                       <td>{w.vPlateNumber}</td>
                       <td>{w.wName}</td>
                       <td>{w.rStartTime}</td>
-                      <td>{w.rPrice}</td>
+                      <td>£ &nbsp;{w.rPrice.toFixed(2)}</td>
                       <td>
                         <button onClick={ev => cancelReservation(w)} className="btn-delete">Cancel Booking</button>
                       </td>
@@ -310,7 +310,7 @@ export default function Reservations() {
                       <td>{w.vPlateNumber}</td>
                       <td>{w.wName}</td>
                       <td>{w.rStartTime}</td>
-                      <td>{w.rPrice}</td>                      
+                      <td>£ &nbsp;{w.rPrice.toFixed(2)}</td>                      
                     </tr>
                   ))}
                 </tbody>

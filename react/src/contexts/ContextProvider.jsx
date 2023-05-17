@@ -28,7 +28,7 @@ export const ContextProvider = ({children}) => {
         _setNotification(message);
         setTimeout(() => {
             _setNotification('');
-        }, 2000)
+        }, 5000)
     }
     const [errorMessage, _setErrorMessage] = useState('');
 

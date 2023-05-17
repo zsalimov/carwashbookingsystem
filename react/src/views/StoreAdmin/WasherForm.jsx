@@ -111,9 +111,9 @@ export default function WasherForm() {
     return (
         <>
            
-            {!isNew &&  <h1>Update Washer:{' '}{washer.wName}</h1>}
+            {!isNew &&  <h1>Update Car Wash:{' '}{washer.wName}</h1>}
 
-            {isNew && <h1>Add New Washer:</h1>}
+            {isNew && <h1>Add New Car Wash:</h1>}
             <div className='card animated fadeInDown'>
                 {loading && (
 
@@ -144,7 +144,7 @@ export default function WasherForm() {
             <Tabs defaultIndex={0} onSelect={(index) => console.log(index)}>
                 <TabList>
                     <Tab>Vehicles</Tab>
-                    <Tab>Washer Type</Tab>
+                    <Tab>Car Wash Type</Tab>
                     <Tab>Configuration</Tab>
                     <Tab>Promotions</Tab>
                     <Tab>Post Process</Tab>

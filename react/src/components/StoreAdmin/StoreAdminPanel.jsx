@@ -11,7 +11,7 @@ export default function StoreAdminPanel() {
             <Link to="/store_dashboard"><Dashboard />Dashboard</Link>
           </li>
           <li className="sideListItem">
-          <Link to="/washers"><LocalCarWash />Washers</Link>
+          <Link to="/washers"><LocalCarWash />Car Wash</Link>
           </li>          
         </ul>
       </div>

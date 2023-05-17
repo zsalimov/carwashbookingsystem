@@ -25,10 +25,10 @@ class WasherController extends Controller
         if ($store_id < 1) return null;
 
         $washers = DB::table('defWasher')
-            ->leftjoin('defopenclosepattern', 'defopenclosepattern.ocpId', '=', 'defWasher.wOpenClosePatternId')
-            ->leftjoin('defstore', 'defstore.sId', '=', 'defWasher.wStoreId')
+            ->leftjoin('defOpenClosePattern', 'defOpenClosePattern.ocpId', '=', 'defWasher.wOpenClosePatternId')
+            ->leftjoin('defStore', 'defStore.sId', '=', 'defWasher.wStoreId')
             ->where('wStoreId', '=', $store_id)
-            ->select('defWasher.wId', 'defStore.sName', 'defWasher.wName', 'defopenclosepattern.ocpName')
+            ->select('defWasher.wId', 'defStore.sName', 'defWasher.wName', 'defOpenClosePattern.ocpName')
             ->get();
 
 
@@ -121,8 +121,7 @@ class WasherController extends Controller
         $vId = $data['vId'];
         $vtId = DB::table('Defvehicle')
             ->where('vId', '=', $vId)
-            ->value('vVehicleTypeId');
-
+            ->value('vVehicleTypeId');               
         $washers = DB::table('defStore')
             ->join('defWasher', 'wStoreId', 'sId')
             ->join('refWasherVehicleType', 'wId', 'wvWasherId')
@@ -191,19 +190,17 @@ class WasherController extends Controller
         if ($day == 0) {
             $day = 7;
         }
-
-
-        $vtId = DB::table('Defvehicle')
+        $vtId = DB::table('defVehicle')
             ->where('vId', '=', $vId)
             ->value('vVehicleTypeId');
 
         $patterns = DB::table('defWasher')
-            ->join('defopenclosepattern', 'ocpId', 'wOpenClosePatternId')
+            ->join('defOpenClosePattern', 'ocpId', 'wOpenClosePatternId')
             ->join('defopenclosedurations', 'ocdId', 'ocpDay' . $day)
             ->where('wId', '=', $wId)
             ->get();
 
-        $washers = DB::table('refwasherwashertypevehicletype')
+        $washers = DB::table('refWasherWasherTypeVehicleType')
             ->where('wwtvtWasherId', '=', $wId)
             ->where('wwtvtVehicleTypeId', '=', $vtId)
             ->where('wwtvtWasherTypeId', '=', $data['wtId'])
@@ -233,14 +230,13 @@ class WasherController extends Controller
             $nextdate = clone $date;
             $nextdate->modify('+1 day');
             $washers[0]->pRes = $this->getReservations($date, $nextdate, $wId);
-        }
-
+        }           
         return $washers;
     }
 
     function getReservations($date, $nextdate, $wId)
     {
-        $reservations = DB::table('defreservation')
+        $reservations = DB::table('defReservation')
             ->where('rStartTime', '>=', $date)
             ->where('rEndTime', '<=', $nextdate)
             ->where('rCancelled', '=', 0)
@@ -257,7 +253,7 @@ class WasherController extends Controller
 
     function getPromotionRates($wId, $date)
     {
-        $promotions = DB::table('refwasherpromotion')
+        $promotions = DB::table('refWasherPromotion')
             ->where('wpWasherId', '=', $wId)
             ->get();
 
@@ -296,7 +292,7 @@ class WasherController extends Controller
             foreach ($promotions as $p) {
                 if ($di > $p->wpStartTime && $di < $p->wpEndTime) {
                     $promotion = $p->wpPromotionRate;
-                    $slot_price = $promotion * $price / 100.0;
+                    $slot_price = $price-( $promotion * $price / 100.0);
                 }
             }
             $diEnd = clone $di;
@@ -352,3 +348,4 @@ class WasherController extends Controller
         return $washer_types;
     }
 }
+?>

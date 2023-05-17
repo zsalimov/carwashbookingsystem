@@ -38,8 +38,7 @@ export default function MyVehiclesForm() {
                     getVehicleType()
                 })
                 .catch(() => {
-                    setLoading(false)
-                    
+                    setLoading(false)                    
                 })
 
         }, [])

@@ -1,4 +1,4 @@
-import {createBrowserRouter, Navigate} from "react-router-dom";
+import {createBrowserRouter} from "react-router-dom";
 import Login from "./views/Login";
 import Users from "./views/SiteAdmin/Users";
 import Companies from "./views/SiteAdmin/Companies";

@@ -159,10 +159,10 @@ class CompanyController extends Controller
         ->where('ucUserId', $user["id"])->value('ucCompanyId');
 
         $users = DB::table('Users')
-        ->join('refuserstore','users.id', '=', 'refUserstore.usUserId')
-        ->join('defstore','defstore.sid', '=', 'refUserstore.usStoreId')
-        ->where('defstore.scompanyid', '=', $company_id)
-        ->select('users.id', 'users.name', 'users.email','users.created_at', 'defstore.sname')
+        ->join('refUserStore','users.id', '=', 'refUserStore.usUserId')
+        ->join('defStore','defStore.sid', '=', 'refUserStore.usStoreId')
+        ->where('defStore.scompanyid', '=', $company_id)
+        ->select('users.id', 'users.name', 'users.email','users.created_at', 'defStore.sname')
         ->get();
 
         // SELECT users.id, users.name, users.email, users.created_at, defStore.sName FROM users 

@@ -17,17 +17,17 @@ class MyVehicleController extends Controller
     public function index($id)
     {
 
-        return DB::table('defvehicle')
-            ->join('defVehicleType', 'defvehicle.vVehicleTypeId', '=', 'defVehicleType.vtId' )
-            ->where('defvehicle.vUserId', '=', $id )
-            ->select('defvehicle.vId', 'defvehicle.vPlateNumber', 'defVehicleType.vtName')
+        return DB::table('defVehicle')
+            ->join('defVehicleType', 'defVehicle.vVehicleTypeId', '=', 'defVehicleType.vtId' )
+            ->where('defVehicle.vUserId', '=', $id )
+            ->select('defVehicle.vId', 'defVehicle.vPlateNumber', 'defVehicleType.vtName')
             ->get();
     }
 
     public function get_vehicle($id)
     {
-        return DB::table('defvehicle')            
-            ->where('defvehicle.vId', '=', $id )
+        return DB::table('defVehicle')            
+            ->where('defVehicle.vId', '=', $id )
             ->get();
     }
 

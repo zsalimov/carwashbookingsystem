@@ -7,8 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './css/header.css'
 import '../../src/index.css'
 
-
-
 export default function () {
 
     const { user, token, notification, setNotification, setUser, setToken } = useStateContext()

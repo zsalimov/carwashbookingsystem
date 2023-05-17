@@ -22,7 +22,7 @@ class PostProcessController extends Controller
     public function get_post_process($id)
     {        
         $pp = DB::table('defPostProcess')
-        ->leftjoin('refWasherPostProcess','wppPostProcessId', '=' ,'ppId') 
+        ->leftjoin('refWasherPostprocess','wppPostProcessId', '=' ,'ppId') 
         ->where('wppWasherId','=',$id)      
         ->select('ppId', 'ppName','wppPrice')
         ->get();
@@ -75,7 +75,7 @@ class PostProcessController extends Controller
     {
         $data = $request->all();      
 
-        DB::table('refWasherPostProcess')
+        DB::table('refWasherPostprocess')
             ->where('wppWasherId', $data['wId'])
             ->where('wppPostProcessId', $data['ppId'])
             ->limit(1)
@@ -88,7 +88,7 @@ class PostProcessController extends Controller
     {
         $pp = DB::select("SELECT * FROM defPostProcess
         WHERE ppId NOT IN 
-        (SELECT ppId FROM refwasherpostprocess 
+        (SELECT ppId FROM refWasherPostprocess 
         JOIN defpostprocess
         on wppPostProcessId = ppId
         WHERE wppWasherId = $id)");
@@ -100,7 +100,7 @@ class PostProcessController extends Controller
     {
         $data = $request->all();      
 
-        DB::table('refWasherPostProcess')
+        DB::table('refWasherPostprocess')
             ->insert($data);
 
             return 1;

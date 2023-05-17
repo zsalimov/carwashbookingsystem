@@ -147,7 +147,7 @@ class StoreController extends Controller
 
         // 2. From RefUserStore table usUserId user should be pointing the User table so that usertype will be converted to 0.
         foreach ($users as $user) {
-            DB::table('Users')
+            DB::table('users')
                 ->where('id', $user->usUserId)
                 ->update(array('usertype' => 0));
         }

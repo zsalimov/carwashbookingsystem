@@ -88,8 +88,8 @@ class ServiceTypeController extends Controller
     {
         $st = DB::select("SELECT * FROM defServiceType
         WHERE stId NOT IN 
-        (SELECT stId FROM refwasherservicetype 
-        JOIN defservicetype
+        (SELECT stId FROM refWasherServiceType 
+        JOIN defServiceType
         on wstserviceTypeId = stId
         WHERE wstWasherId = $id)");
 

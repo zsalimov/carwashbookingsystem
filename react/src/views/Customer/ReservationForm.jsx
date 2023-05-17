@@ -158,7 +158,7 @@ export default function ReservationForm() {
                                     {hours.map((time, j) => (
                                         <button key={`${i}${j}`} className={'btn' + (date.reservationTime !== null && date.reservationTime.name === time.name ? '9' : time.status)} disabled={time.status > 0} type='button'
                                             onClick={() => setDate((prev) => ({ ...prev, reservationTime: time }))}>
-                                            <span style={{ fontSize: '16px' }}>{time.name}</span> / <span style={{ fontSize: '10px', background: 'green', color: 'white' }}>£{time.price}</span>
+                                            <span style={{ fontSize: '16px' }}>{time.name}</span> / <span style={{ fontSize: '10px', background: 'green', color: 'white' }}>£{time.price.toFixed(2)}</span>
                                         </button>
                                         // <Button key={`time-${j}`} id={`${i}${j}`} disabled={time.disabled == 1}
                                         //     current={current} onClick={(e) => { setDate((prev) => ({ ...prev, reservationTime: time })), handleClick(e) }}>{time.name}</Button>

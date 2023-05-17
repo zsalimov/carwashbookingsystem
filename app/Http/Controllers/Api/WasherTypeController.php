@@ -96,10 +96,10 @@ class WasherTypeController extends Controller
             
              
 
-        $washer = DB::select("SELECT * FROM defwashertype 
+        $washer = DB::select("SELECT * FROM defWasherType 
         WHERE wtId NOT IN 
-        (SELECT wtId FROM refwasherwashertype 
-        JOIN defwashertype
+        (SELECT wtId FROM refWasherWasherType 
+        JOIN defWasherType
         on wwtWasherTypeId = wtId
         WHERE wwtWasherId = $id)");
 

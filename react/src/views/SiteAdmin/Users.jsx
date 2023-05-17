@@ -21,7 +21,7 @@ export default function Users() {
   const { user, users, setUsers,setNotification } = useStateContext();
   const page = parseInt(searchParams.get('page') == null ? '1' : searchParams.get('page'))
 
-  console.log('User', user, page);
+  console.log('Object', Object.keys(user));
   const pageOptions = [
     { value: 3, label: "3" },
     { value: 5, label: "5" },

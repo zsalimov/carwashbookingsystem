@@ -24,7 +24,7 @@ export default function Chart() {
         },
         {
             name: 'Apr',
-            au: 2780,
+            au: 780,
 
         },
         {

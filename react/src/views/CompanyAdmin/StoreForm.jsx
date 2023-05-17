@@ -38,9 +38,9 @@ export default function StoreForm() {
         console.log(error);
       };
 
-      useEffect(() => {
-       
+      useEffect(() => {       
         getLocation();
+        getUsers()
       }, [])
      
     document.addEventListener('mapChanged', (x) => {
@@ -61,15 +61,15 @@ export default function StoreForm() {
                 .catch(() => {
                     setLoading(false)
                 })
-
         }, [])
-    }
+    } 
     const getUsers = () => {
         setLoading(true)
         axiosClient.get('/users_0')  //user type of 0 "customers"
-            .then(({ data }) => {
+            .then(({data}) => {
                 setLoading(false)
-                setUsers(data)                
+                setUsers(data)  
+                             
                 var userOptions = data.map(function (u) {
                     return {
                         value: u.id,
